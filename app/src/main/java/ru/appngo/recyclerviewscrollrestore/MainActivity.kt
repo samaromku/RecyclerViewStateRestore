@@ -16,11 +16,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         recycler_view.adapter = adapter
         Thread(Runnable {
-            while (true) {
-                runOnUiThread {
-                    setAdapter()
-                }
-                Thread.sleep(5000)
+            Thread.sleep(1000)
+            runOnUiThread {
+                setAdapter()
             }
         }).start()
     }
@@ -29,7 +27,8 @@ class MainActivity : AppCompatActivity() {
         val list = mutableListOf<User>()
         for (index in 0..100) {
             val color: Int = Color.argb(255, Random.nextInt(256), Random.nextInt(256), Random.nextInt(256))
-            list.add(User(index, color, "$index userName"))
+            val userIndex = Random.nextInt(256)
+            list.add(User(userIndex, color, "$userIndex userName"))
         }
         adapter.data = list
     }
