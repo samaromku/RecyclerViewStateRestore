@@ -3,6 +3,7 @@ package ru.appngo.recyclerviewscrollrestore
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.appngo.recyclerviewscrollrestoreimport.UsersAdapter
 import kotlin.random.Random
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         recycler_view.adapter = adapter
+        adapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         Thread(Runnable {
             Thread.sleep(1000)
             runOnUiThread {
